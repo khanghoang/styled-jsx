@@ -7,13 +7,11 @@ const isProd = process.env && process.env.NODE_ENV === 'production'
 const isString = o => Object.prototype.toString.call(o) === '[object String]'
 
 export default class StyleSheet {
-  constructor(
-    {
-      name = 'stylesheet',
-      optimizeForSpeed = isProd,
-      isBrowser = typeof window !== 'undefined'
-    } = {}
-  ) {
+  constructor({
+    name = 'stylesheet',
+    optimizeForSpeed = isProd,
+    isBrowser = typeof global === 'undefined'
+  } = {}) {
     invariant(isString(name), '`name` must be a string')
     this._name = name
     this._deletedRulePlaceholder = `#${name}-deleted-rule____{}`

@@ -5,7 +5,7 @@ export default class StyleSheetRegistry {
   constructor({
     styleSheet = null,
     optimizeForSpeed = false,
-    isBrowser = typeof window !== 'undefined'
+    isBrowser = typeof global === 'undefined'
   } = {}) {
     this._sheet =
       styleSheet ||
